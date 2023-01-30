@@ -1,11 +1,11 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Dashboard.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Binus Corporation</title>
+        <title>Binus Corporation Dashboard</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -13,11 +13,10 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="/">Binus Corporation!</a>
         </h1>
-
-        <p className={styles.description}>
-          Get started by <a href="/login">Login</a>
-        </p>
       </main>
+      <div className="styles.content">
+        <div>this is dashboard</div>
+      </div>
 
       <footer>
         <a href="/" target="_blank" rel="noopener noreferrer">
