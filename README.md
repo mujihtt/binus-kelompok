@@ -1,1 +1,4 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+how to run:
+
+1.  install node js
+2.  run "npm dev"
