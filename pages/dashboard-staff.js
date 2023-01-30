@@ -1,7 +1,19 @@
+import React from "react";
 import Head from "next/head";
 import styles from "../styles/Dashboard.module.css";
 
 export default function Home() {
+  const [menu, setMenu] = React.useState("pemantauan");
+
+  const handleClick = (target) => {
+    setMenu(target);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("role");
+    window.location.href = "/";
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -11,11 +23,21 @@ export default function Home() {
 
       <main>
         <h1 className={styles.title}>
-          Welcome to <a href="/">Binus Corporation!</a>
+          Welcome to <a href="/">Binus Corporation!</a>, <br />
+          <span onClick={logout} className={styles.logout}>
+            Logout
+          </span>
         </h1>
       </main>
-      <div className="styles.content">
-        <div>this is dashboard</div>
+      <div className={styles.content}>
+        <div className={styles.menu}>
+          <ul>
+            <li onClick={() => handleClick("pemantauan")}>Pemantauan</li>
+          </ul>
+        </div>
+        <div className={styles.contentMenu}>
+          {menu === "pemantauan" && <Pemantauan />}
+        </div>
       </div>
 
       <footer>
@@ -25,14 +47,6 @@ export default function Home() {
       </footer>
 
       <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
         footer {
           width: 100%;
           height: 100px;
@@ -77,3 +91,12 @@ export default function Home() {
     </div>
   );
 }
+
+const Pemantauan = () => {
+  return (
+    <div>
+      <div>Pending matters</div>
+      <div>Kehadiran pegawai</div>
+    </div>
+  );
+};

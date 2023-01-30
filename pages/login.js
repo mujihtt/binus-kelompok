@@ -10,9 +10,19 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (username === "" && password === "") {
+      return;
+    }
+
+    if (username === "manager" && password === "manager") {
+      localStorage.setItem("role", "manager");
+      router.push("/dashboard-manager");
+    } else if (username === "staff" && password === "staff") {
+      localStorage.setItem("role", "staff");
+      router.push("/dashboard-staff");
+    }
     // Send a request to the server with the username and password
     // and handle the response (e.g. redirect to the homepage if successful)
-    router.push("/dashboard");
   };
 
   return (

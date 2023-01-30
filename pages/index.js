@@ -1,7 +1,20 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+
+  if (typeof window !== "undefined") {
+    if (localStorage.getItem("role") === "manager") {
+      router.push("/dashboard-manager");
+    } else if (localStorage.getItem("role") === "staff") {
+      router.push("/dashboard-staff");
+    } else {
+      router.push("/login");
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
